@@ -11,7 +11,7 @@ headers = {
 response = requests.get(url, headers=headers)
 soup = BeautifulSoup(response.text, "html.parser")
 
-# print(soup.prettify())
+soup.prettify()
 
 # card_text = soup.find_all(class_= "card-text") 
 
@@ -20,14 +20,14 @@ soup = BeautifulSoup(response.text, "html.parser")
 #     name = item.get_text(strip=True)
 #     print(f"{i}. {name}")
 
-# products = soup.select("p.card-text a")
+products = soup.select("p.card-text a")
 
-# for i, tag in enumerate(products, 1):
-#     title = tag.get('title')
-#     if title:
-#         print(f"{i}. {title}")
+for i, tag in enumerate(products, 1):
+    title = tag.get('title')
+    if title:
+        print(f"{i}. {title}")
 
-# print("====================================")
+print("====================================")
 
 # price_tag = soup.select("a.pr-text.cat-sp-text.pb-1.text-dark.text-decoration-none")
 
@@ -36,14 +36,12 @@ soup = BeautifulSoup(response.text, "html.parser")
 
 cards = soup.select("div.card.h-100")
 
-for i, card in enumerate(cards, 1):
-
-    name_tag = card.select_one("p.card-text a[data-bs-original-title]")
-    model = name_tag.get("data-bs-original-title", "").strip()
-
-    price_tag = card.select_one("a.pr-text.cat-sp-text.pb-1.text-dark.text-decoration-none")
-    price = price_tag.text.strip()
+# for i, card in enumerate(cards, 1):
 
 
-    print(f"{i}  🖥️ {model}\n")
-    print(f"---- 💰 Price:  {price}")
+#     price_tag = card.select_one("a.pr-text.cat-sp-text.pb-1.text-dark.text-decoration-none")
+#     price = price_tag.text.strip()
+
+
+#     # print(f"{i}  🖥️ {model}\n")
+#     print(f"---- 💰 Price:  {price}")
